@@ -82,7 +82,6 @@ def get_articles(article_headings, base_url, category_labels, category_urls, cat
                                      'Subcategory': article_subcategory, 'Topic': article_topics, 'Authors': article_authors,
                                      'Text': article_body, 'Images': article_images})
                     
-
 def get_article_title(soup):
     article_title_element = soup.select_one('h1#main-heading')
     if article_title_element is not None: #Checks if the element is not a none 
@@ -139,15 +138,6 @@ def get_article_images(soup):
         return image_links
     else:
         print('No images found.')
-        return None
-
-def get_article_videos(soup):
-    video_elements = soup.select('div[data-component="video-block"] video ')
-    if video_elements:
-        videos = [elem.get('src') for elem in video_elements]
-        return videos
-    else:
-        print('No videos found.')
         return None
 
 def get_article_topics(soup):

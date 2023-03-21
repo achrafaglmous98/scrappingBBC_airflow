@@ -17,7 +17,7 @@ def clean_and_push_data():
 
     if files:
         filename = min(files, key=lambda x: os.path.basename(x))
-        print(f"Found latest file: {filename}")
+        print(f"Found oldest file: {filename}")
     else:
         print("No matching files found")
 
@@ -36,9 +36,6 @@ def clean_and_push_data():
     df['Topic'] = df['Topic'].astype(str)
     df['Authors'] = df['Authors'].apply(get_list_of_authors)
     df.fillna(value="N/A", inplace=True)
-
-    print(type(df['Authors'].iloc[0]))
-    print(df['Authors'].iloc[0])
 
     # Create connection to MongoDB using MongoHook
     mongo_hook = MongoHook(conn_id="mongo_default")
@@ -94,10 +91,7 @@ def remove_after_cap(string):
     return new_string
 
 def get_list_of_authors(authors):
-    """
-    Clean the author field by removing any leading or trailing spaces, 
-    converting the field to lowercase, and extracting the author names.
-    """
+    
     if not isinstance(authors, str):
         return ["N/A"]
     
