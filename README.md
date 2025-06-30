@@ -35,8 +35,3 @@ The collected data is cleaned, analyzed, and stored in MongoDB. A small API is u
 - `processed_data/` – Final processed data ready for MongoDB
 - `analysis_notebook.ipynb` – Exploratory data analysis & classification
 - `webserver_config.py` – Webserver config for Airflow
-
-## Setup
-
-```bash
-docker-compose up --build
